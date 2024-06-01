@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de cliente</title>
+</head>
+<body>
+    <h1>Listado de clientes</h1>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>nombre</th>
+            <th>email</th>
+            <th>edad</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody>
+            {% for cliente in clientes  %}
+                <tr>
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.edad}}</td>
+                    <td> 
+                        <a href="{% url 'eliminar' cliente.id %}">Eliminar</a>
+                        <a href="{% url 'actualizar' cliente.id %}">Actualizar</a>
+                    </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button><a href="{% url 'crear' %}">Crear</a></button>
+</body>
+</html>
